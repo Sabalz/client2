@@ -4,7 +4,7 @@ export default class register extends Component {
   render() {
     return (
       <div>  <section class="container">
-      <h1 class="x-large text-primary">Sign Up</h1>
+      <h1 class="x-large text-primary">Sign Up for DevConnector </h1>
       <p class="lead"><i class="fa fa-user-circle-o"></i>Create your Account</p>
       <form class="form">
         <div class="form-group">
