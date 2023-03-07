@@ -1,5 +1,6 @@
 
 import React, { Component } from "react";
+import api from "../../Utils/api";
 
 export default class Register extends Component {
   constructor() {
@@ -10,6 +11,8 @@ export default class Register extends Component {
       email: "",
       password: "",
       confirmPassword: "",
+      errors: [],
+      
     };
     // state : its an object from the base class i.e. Component class to hold the data for our component.
   }
@@ -29,7 +32,12 @@ export default class Register extends Component {
     e.preventDefault();
     console.log(this.state);
 
-    api.post('/users',this.state);
+    api.post('/users',this.state).then((res) => console.log(res.data)).catch((err) => {this.setState({["errors"]: err.response.data.errors});
+    console.log(err.response.data);
+  });
+    // then : to handle the success part
+    // catch: tohandle the error / failure
+    // part 
     // end point
     // data
     // headers
@@ -52,10 +60,12 @@ export default class Register extends Component {
                 type="text"
                 placeholder="Name"
                 name="name"
-                required
                 value={name}
                 onChange={this.onChange}
               />
+              <div className="d-block invalid-feedback">
+              {this.state.errors.length != 0 && this.state.errors[0].msg}
+              </div>
             </div>
             <div class="form-group">
               <input
@@ -63,7 +73,11 @@ export default class Register extends Component {
                 placeholder="Email Address"
                 name="email"
                 value={email}
+                onChange={this.onChange}
               />
+              <div className= "d-block invalid-feedback">
+                {this.state.errors.length != 0 && this.state.errors[1].msg}
+              </div>
               <small class="form-text">
                 This site uses Gravatar so if you want a profile image, use a
                 Gravatar email
@@ -76,7 +90,11 @@ export default class Register extends Component {
                 name="password"
                 minLength="6"
                 value={password}
+                onchange={this.onChange}
               />
+              <div className="d-block invalid-feedback">
+                {this.state.errors.length != 0 && this.state.errors[2].msg}
+              </div>
             </div>
             <div class="form-group">
               <input

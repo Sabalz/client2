@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Link } from 'react-router-dom'
+import api from '../../Utils/api';
 
 export default class Login extends Component {
   constructor() {
@@ -26,7 +27,9 @@ export default class Login extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     console.log(this.state);
-  };
+  
+    api.post('/auth',this.state).then((res) => console.log(res.data)).catch();
+  }
 
 render() {
   const { email, password} = this.state;
@@ -65,6 +68,10 @@ render() {
     )
 }
 }
+// / auth method : post.
+
+
+
 
 
 

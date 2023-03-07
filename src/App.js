@@ -1,24 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
 
-import { BrowserRouter} from 'react-router-dom'
 
-import Header from './compnents/Layouts/Header';
-import Footer from './compnents/Layouts/Footer';
-import Routers from './compnents/Routers';
+import Routers from './components/Routers';
+import { BrowserRouter } from 'react-router-dom';
+import Header from './components/Layouts/Header';
+import Footer from './components/Layouts/Footer';
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
-     Hello Saba
+   
+    <div className="App" id="app">
+
+       <BrowserRouter>
      <Header></Header>
      <Routers></Routers>
      <Footer></Footer>
      </BrowserRouter>
+     
     </div>
   );
 }
 
 export default App;
+
 
